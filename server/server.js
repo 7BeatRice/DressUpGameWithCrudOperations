@@ -22,7 +22,7 @@ app.use(express.json())
 
 app.use('/characters', characterRouter)
 app.use('/skins', skinRouter)
-app.use('/hair', hairRouter)
+app.use('/hairs', hairRouter)
 app.use('/tops', topRouter)
 app.use('/bottoms', bottomRouter)
 app.use('/dresses', dressRouter)

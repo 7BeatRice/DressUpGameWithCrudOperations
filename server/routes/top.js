@@ -3,7 +3,7 @@ import topController from '../controllers/top.js'
 
 const router = express.Router()
 
-router.get('/:alltops', topController.getTops )
-router.get('/top/:id', topController.getTopById)
+router.get('/', topController.getTops )
+router.get('/:id', topController.getTopById)
 
 export default router

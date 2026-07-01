@@ -3,7 +3,7 @@ import hairController from '../controllers/hair.js'
 
 const router = express.Router()
 
-router.get('/:allhairs', hairController.getHairs )
-router.get('/hair/:id', hairController.getHairById)
+router.get('/', hairController.getHairs )
+router.get('/:id', hairController.getHairById)
 
 export default router

@@ -3,7 +3,7 @@ import skinController from '../controllers/skin.js'
 
 const router = express.Router()
 
-router.get('/:allskins', skinController.getSkins )
-router.get('/skin/:id', skinController.getSkinById)
+router.get('/', skinController.getSkins )
+router.get('/:id', skinController.getSkinById)
 
 export default router
