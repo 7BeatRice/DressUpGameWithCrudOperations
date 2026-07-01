@@ -13,6 +13,7 @@ import calcPrice from '../utillities/calcPrice.jsx'
 import validateInput from '../utillities/validateInput.jsx'
 
 const CreateCharacter = () => {
+    const [showDisclaimer, setShowDisclaimer] = useState(true)
 
     const [defaultBodyImage, setDefaultBodyImage] = useState("")
     const [characterName, setCharacterName] = useState("")
@@ -31,6 +32,16 @@ const CreateCharacter = () => {
 
     const [totalPrice, setTotalPrice] = useState(0)
     const [errorMessage, setErrorMessage] = useState('')
+
+
+    //inform User about slection rules
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowWelcome(false)
+        }, 10000) 
+
+        return () => clearTimeout(timer) 
+    }, [])
 
     // load the default base body on first render
     useEffect(() => {
@@ -93,7 +104,6 @@ const CreateCharacter = () => {
             return
         }
 
-        setErrorMessage('')
         setSelections((prev) => ({ ...prev, [category]: item }))
         setOpenCategory(null)
     }
@@ -111,14 +121,21 @@ const CreateCharacter = () => {
         await CharacterApi.createCharacter(character)
     }
 
-    const isDressLocked = Boolean(selections.top || selections.bottom)
-    const isTopBottomLocked = Boolean(selections.dress)
+  
 
     // skin choice swaps the body itself, everything else stacks on top of it
     const currentBodyImage = selections.skin ? selections.skin.image : defaultBodyImage
 
     return (
         <div className='create-character'>
+            {showDisclaimer && (
+                <div className="disclaimer-popup">
+                    <div className="popup-content">
+                        <span>You can not select dress and (top or bottom), its one or the other</span>
+                        <button className="close-popup-btn" onClick={() => setShowDisclaimer(false)}>×</button>
+                    </div>
+                </div>
+            )}
 
             <input
                 type="text"
@@ -126,7 +143,7 @@ const CreateCharacter = () => {
                 value={characterName}
                 onChange={(e) => setCharacterName(e.target.value)}
             />
-
+           
             <label>
                 <input type="checkbox" checked={Boolean(selections.dress)} readOnly />
                 Dress
@@ -143,15 +160,15 @@ const CreateCharacter = () => {
                     <div className='image'>✄</div>
                     <div className="image-name">Hair</div>
                 </button>
-                <button id="top-button" disabled={isTopBottomLocked} onClick={() => handleCategoryClick('top')}>
+                <button id="top-button" onClick={() => handleCategoryClick('top')}>
                     <div className='image'>👕</div>
                     <div className="image-name">Tops</div>
                 </button>
-                <button id="bottom-button" disabled={isTopBottomLocked} onClick={() => handleCategoryClick('bottom')}>
+                <button id="bottom-button"  onClick={() => handleCategoryClick('bottom')}>
                     <div className='image'>👖</div>
                     <div className="image-name">Bottoms</div>
                 </button>
-                <button id="dress-button" disabled={isDressLocked} onClick={() => handleCategoryClick('dress')}>
+                <button id="dress-button"  onClick={() => handleCategoryClick('dress')}>
                     <div className='image'>👗</div>
                     <div className="image-name">Dresses</div>
                 </button>

@@ -119,7 +119,7 @@ const createTopsTable = async() => {
 const createBottomsTable = async() => {
 
     const createTableQuery = `
-    DROP TABLE IF EXISTS tops;
+    DROP TABLE IF EXISTS bottoms;
     
     CREATE TABLE IF NOT EXISTS bottoms(
         id VARCHAR(255) PRIMARY KEY,
@@ -257,7 +257,7 @@ const seedBottoms= async() =>{
     ]
     pool.query(insertQuery, values, (err, res) =>{
          if (err){
-                console.error('Errro inserting bottoms', err)
+                console.error('Erro inserting bottoms', err)
                 return
             }
             console.log(`${bottom.name} added successfully`)
