@@ -1,6 +1,6 @@
 const getAllDresses= async() =>{
     try{
-          const response = await fetch("/dresses/")
+          const response = await fetch("/dresses")
           const data =await response.json()
           console.log("Successfully fetched dresses ")
           return data
