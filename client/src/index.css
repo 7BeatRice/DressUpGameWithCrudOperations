@@ -2,16 +2,16 @@
 
 #root {
     --font-family: Rubik, Verdana, sans-serif;
-    --primary: rgb(115, 2, 12);
-    --primary-hover: black;
-    --color: white;
-    --h1-color: var(--color);
-    --h2-color: var(--color);
-    --h3-color: var(--color);
-    --card-background-color: rgba(0, 0, 0, 0.8);
-    --card-sectionning-background-color: rgba(0, 0, 0, 0.8);
-    --form-element-active-border-color: var(--color);
-    --form-element-placeholder-color: gray;
+    --primary: rgb(255, 204, 229);                   
+    --primary-hover: rgb(255, 153, 204);            
+    --color: rgb(136, 74, 97);                     
+    --h1-color: rgb(218, 102, 153);               
+    --h2-color: var(--h1-color);
+    --h3-color: var(--h1-color);
+    --card-background-color: rgba(255, 255, 255, 0.95); 
+    --card-sectionning-background-color: rgb(255, 240, 245); 
+    --form-element-active-border-color: var(--primary);
+    --form-element-placeholder-color: rgb(200, 160, 175); 
 }
 
 #root h1 {

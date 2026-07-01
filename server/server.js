@@ -3,12 +3,12 @@ import path from 'path'
 import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
 
-import characterRouter from 'routes/character.js'
-import bottomRouter from 'routes/bottoms.js'
-import dressRouter from 'routes/dress.js'
-import hairRouter from 'routes/hair.js'
-import topRouter from 'routes/top.js'
-import skinRouter from 'routes/skin.js'
+import characterRouter from './routes/character.js'
+import bottomRouter from './routes/bottoms.js'
+import dressRouter from './routes/dress.js'
+import hairRouter from './routes/hair.js'
+import topRouter from './routes/top.js'
+import skinRouter from './routes/skin.js'
 
 
 

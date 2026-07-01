@@ -1,0 +1,180 @@
+
+.create-character {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allows text input to stay on its own row at the top */
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+    padding: 30px;
+    font-family: 'Rubik', Verdana, sans-serif;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Forces the character name input, labels, and error messages to span 100% width on top */
+.create-character > input[type="text"],
+.create-character > label,
+.create-character > .error-message {
+    flex-basis: 100%;
+    margin-bottom: 8px;
+}
+
+/* 2. LEFT SIDE: Category Options Menu Sidebar */
+.create-character .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 160px; 
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    margin-top: 20px;
+    
+    order: 1; /* Lowest structural order number forces this to the left column */
+}
+
+/* Category menu buttons */
+.create-character .options button {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.39); 
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.create-character .options button .image {
+    font-size: 1.8rem;
+}
+
+.create-character .options button .image-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgb(136, 74, 97);
+}
+
+
+.create-character .options button:hover:not(:disabled) {
+    background-color: rgb(255, 240, 245); 
+    color: rgb(255, 153, 204);
+}
+
+.create-character .options button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+.character-preview {
+    position: relative; 
+    background: transparent; 
+    margin-top: 20px;
+    width: 600px;       
+    display: block;
+    
+    order: 2; 
+}
+
+
+.character-preview img.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;        
+    height: auto; 
+    image-rendering: pixelated; /* Sharp pixel tracking scaling */
+}
+
+
+.character-preview img.layer:first-child {
+    position: relative;
+}
+
+
+/* 4. RIGHT SIDE: ASSET DRAWER PANEL */
+.create-character .item-panel {
+    background-color: #faf9f6; 
+    border: 2px solid rgb(255, 240, 245);
+    border-radius: 20px;
+    padding: 24px;
+    width: 450px;   
+    height: 450px;
+    overflow-y: auto; 
+    box-shadow: 0 8px 24px rgba(136, 74, 97, 0.03);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+    
+    order: 3; 
+}
+
+
+.item-option {
+    background: white;
+    border: 1px solid rgb(255, 240, 245);
+    border-radius: 12px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.1s;
+}
+
+.item-option:hover {
+    transform: scale(1.03);
+    border-color: rgb(255, 153, 204);
+}
+
+
+.item-option img {
+    max-width: 60px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.item-name {
+    font-size: 0.8rem;
+    color: rgb(136, 74, 97);
+    margin-top: 4px;
+}
+
+.item-price {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #b57c91;
+}
+
+
+/* 5. FOOTER ELEMENTS: Error, Save Button, and Total Price Accents */
+.total-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgb(136, 74, 97);
+    flex-basis: 100%; 
+    text-align: right;
+    margin-top: 12px;
+    order: 4;
+}
+
+.create-character > button {
+    margin-top: 12px;
+    padding: 10px 24px;
+    background-color: rgb(136, 74, 97);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    order: 5;
+}

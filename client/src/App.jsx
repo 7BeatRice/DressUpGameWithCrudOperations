@@ -1,29 +1,29 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
-import Navigation from './components/Navigation'
-import ViewCars from './pages/ViewCars'
-import EditCar from './pages/EditCar'
-import CreateCar from './pages/CreateCar'
-import CarDetails from './pages/CarDetails'
+import Navigation from './components/Navigation.jsx'
+import ViewCharacters from './pages/ViewCharacters.jsx'
+import EditCharacter from './pages/EditCharacter.jsx'
+import CreateCharacter from './pages/CreateCharacter.jsx'
+import CharacterDetails from './pages/CharacterDetails.jsx'
 import './App.css'
 
 const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <CreateCar title='BOLT BUCKET | Customize' />
+      element: <CreateCharacter title='Dream Fit | Customize' />
     },
     {
-      path:'/customcars',
-      element: <ViewCars title='BOLT BUCKET | Custom Cars' />
+      path:'/characters',
+      element: <ViewCharacters title='Dream Fit | Custom Characters' />
     },
     {
-      path: '/customcars/:id',
-      element: <CarDetails title='BOLT BUCKET | View' />
+      path: '/characters/:id',
+      element: <CharacterDetails  title='Dream Fit | Custom Characters' />
     },
     {
-      path: '/edit/:id',
-      element: <EditCar title='BOLT BUCKET | Edit' />
+      path: '/characters/edit/:id',
+      element: <EditCharacter title='Dream Fit | Custom Characters' />
     }
   ])
 

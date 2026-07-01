@@ -1,8 +1,8 @@
 import React from 'react'
 import '../App.css'
 
-const EditCar = () => {
-    
+const CharacterDetails = () => {
+
     return (
         <div>
 
@@ -10,4 +10,4 @@ const EditCar = () => {
     )
 }
 
-export default EditCar
+export default CharacterDetails

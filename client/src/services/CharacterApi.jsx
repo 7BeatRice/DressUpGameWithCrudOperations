@@ -21,7 +21,7 @@ const getCharacterById = async(id) =>{
         return data
     }
     catch(error){
-        console.error("Error: Could not fetch character by id")
+        console.error("Error: Could not fetch character by id", error)
     }
 }
 

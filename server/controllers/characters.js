@@ -1,4 +1,4 @@
-import {pool} from '../config/database'
+import {pool} from '../config/database.js'
 
 const getCharacters = async (req, res) => {
     try{
@@ -13,7 +13,7 @@ const getCharacters = async (req, res) => {
 
 const getCharacterById = async (req, res) => {
     try{
-        const selectQuery = 'SELECT * FROM gifts WHERE id=$1'
+        const selectQuery = 'SELECT * FROM characters WHERE id=$1'
            const characterId = req.params.id
             const result = await pool.query(selectQuery, [characterId])
             res.status(200).json(result.rows[0] )
@@ -28,7 +28,6 @@ const createCharacter = async(req, res) => {
      try{
             const {id, name, skin_id, hair_id, dress_id, top_id, bottom_id} = req.body 
             const createQuery = 'INSERT INTO characters (id, name, skin_id, hair_id, dress_id, top_id, bottom_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *'
-            const characterId = req.params.id
             const result = await pool.query(createQuery, [id, name, skin_id, hair_id, dress_id, top_id, bottom_id])
             res.status(200).json(result.rows[0])
             }
@@ -42,7 +41,7 @@ const createCharacter = async(req, res) => {
 const updateCharacter = async(req, res) => {
      try{
             const  id = req.params.id 
-            const updateQuery = ' UPDATE characters SET (name, skin_id, hair_id, dress_id, top_id, bottom_id) VALUES ($1, $2, $3, $4, $5, $6, $7) WHERE id = $8'
+            const updateQuery = ' UPDATE characters (name, skin_id, hair_id, dress_id, top_id, bottom_id) VALUES ($1, $2, $3, $4, $5, $6) WHERE id = $7'
             const result = await pool.query(updateQuery, [name, skin_id, hair_id, dress_id, top_id, bottom_id, id])
             res.status(200).json(result.rows[0])
             }
@@ -57,7 +56,7 @@ const deleteCharacter = async(req, res) => {
      try{
             const  id = req.params.id 
             const deleteQuery = 'DELETE FROM characters WHERE id = $1'
-            const result = await pool.query(updateQuery, [id])
+            const result = await pool.query(deleteQuery, [id])
             res.status(200).json(result.rows[0])
             }
     catch (error){
