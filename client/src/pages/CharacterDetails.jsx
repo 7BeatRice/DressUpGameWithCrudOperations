@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import '../App.css'
 
 import CharacterApi from '../services/CharacterApi.jsx'
@@ -15,7 +15,7 @@ const CharacterDetails = () => {
     const { id } = useParams()
     const [character, setCharacter] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    const navigate = useNavigate()
     // load the character then look up the name and image of each equipped item
     useEffect(() => {
         const loadCharacter = async () => {
@@ -39,6 +39,17 @@ const CharacterDetails = () => {
 
         loadCharacter()
     }, [id])
+
+    const handleUpdate = async () => {
+            navigate(`/characters/edit/${id}`)
+    }
+    const handleDelete = async() => {
+        const character = await CharacterApi.getCharacterById(id)
+        console.log(character)
+        await CharacterApi.deleteCharacter(character)
+        navigate(`/characters`)
+    }
+    
 
     if (loading) {
         return <div>loading</div>
@@ -96,7 +107,12 @@ const CharacterDetails = () => {
                 <p>dress: {character.dress ? character.dress.name : 'none'}</p>
                 <p>top: {character.top ? character.top.name : 'none'}</p>
                 <p>bottom: {character.bottom ? character.bottom.name : 'none'}</p>
-            </div>
+                </div>
+          <div>
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleUpdate}>update</button>
+        </div>
+          
 
         </div>
     )

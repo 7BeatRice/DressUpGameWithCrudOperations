@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {useNavigate } from 'react-router-dom'
 import '../App.css'
 import '../css/createCharacter.css'
 
@@ -14,6 +15,7 @@ import validateInput from '../utillities/validateInput.jsx'
 
 const CreateCharacter = () => {
     const [showDisclaimer, setShowDisclaimer] = useState(true)
+      const navigate = useNavigate()
 
     const [defaultBodyImage, setDefaultBodyImage] = useState("")
     const [characterName, setCharacterName] = useState("")
@@ -119,6 +121,7 @@ const CreateCharacter = () => {
         }
 
         await CharacterApi.createCharacter(character)
+        navigate('/characters')
     }
 
   
