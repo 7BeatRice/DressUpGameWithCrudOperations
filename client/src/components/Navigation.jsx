@@ -11,7 +11,7 @@ const Navigation = () => {
 
             <ul>
                 <li><a href='/' role='button'>Customize</a></li>
-                <li><a href='/characters' role='button'>View Cars</a></li>
+                <li><a href='/characters' role='button'>View Characters</a></li>
             </ul>
             
         </nav>

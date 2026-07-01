@@ -1,4 +1,4 @@
-/* 1. MAIN WRAPPER */
+
 .create-character {
     display: flex;
     flex-direction: row;
@@ -19,19 +19,19 @@
     margin-bottom: 8px;
 }
 
-/* ERROR MESSAGE FIX: Forced onto its own dedicated row block below the name */
+
 .error-message {
-    flex-basis: 100%;       /* Spans the entire width of the row */
+    flex-basis: 100%;       
     color: #d9534f;
     font-size: 0.95rem;
     font-weight: 500;
     margin-top: 8px;
     margin-bottom: 12px;
     padding: 8px 12px;
-    background-color: #fdf2f2; /* Soft red alert background tint */
+    background-color: #fdf2f2; 
     border-radius: 6px;
     
-    order: 0;               /* Ensures it sits safely between the inputs and workspace panels */
+    order: 0;               
 }
 
 .create-character .options {
@@ -45,10 +45,10 @@
     box-shadow: none;
     margin-top: 20px;
     
-    order: 1; /* Lowest structural order number forces this to the left column */
+    order: 1; 
 }
 
-/* Category menu buttons */
+
 .create-character .options button {
     display: flex;
     flex-direction: column; 
@@ -105,7 +105,7 @@
     left: 0;
     width: 100%;        
     height: auto; 
-    image-rendering: pixelated; /* Sharp pixel tracking scaling */
+    image-rendering: pixelated; 
 }
 
 
@@ -113,8 +113,6 @@
     position: relative;
 }
 
-
-/* 4. RIGHT SIDE: ASSET DRAWER PANEL */
 .create-character .item-panel {
     background-color: #faf9f6; 
     border: 2px solid rgb(255, 240, 245);
@@ -169,8 +167,6 @@
     color: #b57c91;
 }
 
-
-/* 5. FOOTER ELEMENTS: Error, Save Button, and Total Price Accents */
 .total-price {
     font-size: 1.2rem;
     font-weight: 700;

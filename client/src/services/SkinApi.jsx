@@ -21,7 +21,7 @@ const getSkinById = async(id) =>{
         return data
     }
     catch(error){
-        console.error("Error: Could not fetch Skin by id")
+        console.error("Error: Could not fetch Skin by id", error)
     }
 }
 

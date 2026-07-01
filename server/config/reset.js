@@ -10,7 +10,6 @@ dotenv.config({path:'../.env'})
 
 const createCharactersTable = async()=>{
     const tableQuery = `
-    DROP TABLE IF EXISTS characters;
 
     CREATE TABLE IF NOT EXISTS characters(
         id Serial PRIMARY KEY,
@@ -295,8 +294,13 @@ const seedHairs = async() =>{
     
 }
 
-seedBottoms()
-seedDresses()
-seedHairs()
-seedSkins()
-seedTops()
+const seedAll = async () => {
+    await seedSkins()
+     await seedHairs()
+     await seedDresses()
+     await seedTops()
+     await seedBottoms()
+    await createCharactersTable()
+}
+
+seedAll()

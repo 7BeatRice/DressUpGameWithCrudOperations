@@ -20,7 +20,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/characters', characterRouter)
+app.use('/api/characters', characterRouter)
 app.use('/skins', skinRouter)
 app.use('/hairs', hairRouter)
 app.use('/tops', topRouter)

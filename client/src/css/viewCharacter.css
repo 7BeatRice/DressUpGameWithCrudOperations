@@ -1,0 +1,103 @@
+
+.view-characters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 30px;
+    font-family: 'Rubik', Verdana, sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustment: stack to 1 column on small phone screens */
+@media (max-width: 650px) {
+    .view-characters {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.character-card {
+    position: relative; 
+    background-color: #faf9f6; 
+    border: 2px solid rgb(255, 240, 245); 
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 6px 16px rgba(136, 74, 97, 0.04);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(255, 153, 204); 
+    box-shadow: 0 8px 24px rgba(136, 74, 97, 0.08);
+}
+
+
+.character-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgb(136, 74, 97);
+    margin: 0 0 16px 0;
+    padding-right: 30px; /* Leave breathing room so text doesn't hit the ⋮ button */
+    border-bottom: 2px dashed rgb(255, 240, 245);
+    padding-bottom: 8px;
+}
+
+
+#editButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #b57c91;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 50%;
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#editButton:hover {
+    background-color: rgb(255, 240, 245);
+    color: rgb(255, 153, 204);
+}
+
+
+.character-card p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #b57c91;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Make values look slightly more structured */
+.character-card p::before {
+    font-weight: 500;
+    color: rgb(136, 74, 97);
+}
+
+/* 6. CARD BUTTON: Details Action */
+.character-card > button:not(#editButton) {
+    margin-top: auto; /* Pushes button to the absolute bottom of the card content */
+    padding: 10px 20px;
+    background-color: rgb(136, 74, 97);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: flex-start; 
+}
+
+.character-card > button:not(#editButton):hover {
+    background-color: rgb(255, 153, 204);
+}

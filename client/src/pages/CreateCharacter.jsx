@@ -37,7 +37,7 @@ const CreateCharacter = () => {
     //inform User about slection rules
     useEffect(() => {
         const timer = setTimeout(() => {
-            setShowWelcome(false)
+            setShowDisclaimer(false)
         }, 10000) 
 
         return () => clearTimeout(timer) 

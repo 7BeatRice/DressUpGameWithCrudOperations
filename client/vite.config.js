@@ -16,7 +16,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/character': {
+      '/api/characters': {
         target: 'http://localhost:3000'
       },
        '/skins': {
