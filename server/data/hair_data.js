@@ -8,7 +8,7 @@ const hairData = [
      {
         "id": "blonde_long_hair",
         "name": "Blonde Long Hair",
-        "image": "assets/hair/blonde_long_hair.png",
+        "image": "assets/hair/blond_long_hair.png",
         "price": "$100"
     },
      {
