@@ -9,9 +9,26 @@ import DressApi from "../services/DressApi"
 
 const CreateCharacters = () => {
 
+    const [warning, setWarning] = useState(true);
     const [options, setOptions] = useState([]);
+    const [skintone, setSkinTone] = useState("");
+    const [hair, setHair] = useState("");
+    const [top, setTop] = useState("");
+    const [bottom, setBottom] = useState("");
+    const [dress, setDress] = useState("");
 
 
+    
+    useEffect(()=>{
+        const timer = setTimeout(
+            () => {
+                setWarning(false)
+            }, 5000
+        )
+        return () => clearTimeout(timer)
+
+    }, [])
+    
     const getSkinTones = async() => {
         try{
             const skins = await SkinApi.getAllSkins();
@@ -78,7 +95,14 @@ const CreateCharacters = () => {
                 </div>
             </div>
            
-            
+            {
+               warning &&
+                (<div className="warning_message">
+                    <button onClick={() => setWarning(false)}>X</button>
+                    <p>Cannot select dress when wearing a top or bottom, and vice versa! </p>
+                </div>)
+                
+            }
             <div id="selection_area">
                 <div className="icon_display">
                 <div className="icons">
