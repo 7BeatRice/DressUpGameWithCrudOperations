@@ -84,6 +84,7 @@ html {
 }
 
 #character_preview_background{
+    position: relative;
     background-color: rgba(255, 255, 255, 0.74);
     height: 80vh;
     border-radius: 20px;
@@ -100,3 +101,22 @@ html {
     align-items:  center;
     flex-shrink: 0;
 }
+
+#Character_preview{
+    position: relative;
+    display: inline-block;
+  
+}
+
+.body{
+     display: block;
+     z-index: 2;
+}
+
+.hair, .top, .bottom, .dress {
+    position: absolute;
+    z-index: 10;
+    top: 0px;     
+    left: 0px;     
+}
+

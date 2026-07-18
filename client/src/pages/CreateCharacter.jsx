@@ -6,12 +6,13 @@ import HairApi from "../services/HairApi"
 import BottomApi from "../services/BottomApi"
 import TopApi from "../services/TopApi"
 import DressApi from "../services/DressApi"
+import { use } from "react";
 
 const CreateCharacters = () => {
 
     const [warning, setWarning] = useState(true);
-    const [options, setOptions] = useState([]);
-    const [skintone, setSkinTone] = useState("");
+    const [options, setOptions] = useState({items: [], setter: () => {}} );
+    const [skintone, setSkinTone] = useState("../public/assets/skinTone/base_body.png");
     const [hair, setHair] = useState("");
     const [top, setTop] = useState("");
     const [bottom, setBottom] = useState("");
@@ -28,11 +29,20 @@ const CreateCharacters = () => {
         return () => clearTimeout(timer)
 
     }, [])
+
+   
     
     const getSkinTones = async() => {
         try{
             const skins = await SkinApi.getAllSkins();
-            setOptions(skins)
+            setOptions(
+                {
+                    items: skins,
+                    setter: setSkinTone
+                }
+            );
+            console.log(options)
+            
         }
         catch (error){
             console.error(error)
@@ -43,7 +53,10 @@ const CreateCharacters = () => {
     const getHairs = async() => {
         try{
             const hairs = await HairApi.getAllHairs() ;
-            setOptions(hairs)
+            setOptions({
+                items: hairs,
+                setter: setHair
+            })
         }
         catch (error){
             console.error(error)
@@ -56,7 +69,10 @@ const CreateCharacters = () => {
     const getTops = async() => {
         try{
             const tops = await TopApi.getAllTops();
-            setOptions(tops)
+            setOptions({
+                items: tops,
+                setter: setTop
+            })
         }
         catch(error){
             console.error(error)
@@ -66,7 +82,10 @@ const CreateCharacters = () => {
     const getBottoms = async() => {
         try{
             const bottoms = await BottomApi.getAllBottoms()
-            setOptions(bottoms)
+            setOptions({
+                items: bottoms,
+                setter: setBottom
+            })
         }
         catch(error){
             console.error(error)
@@ -76,7 +95,11 @@ const CreateCharacters = () => {
     const getDresses = async() => {
         try{
             const dresses =await  DressApi.getAllDresses()
-            setOptions(dresses)
+            setOptions(
+                {
+                    items: dresses,
+                    setter: setDress
+                })
         }
         catch(error){
             console.error(error)
@@ -91,7 +114,11 @@ const CreateCharacters = () => {
         <div id="create_character">
             <div id="character_preview_background">
                 <div id="Character_preview">
-                    <img src="../public/assets/skinTone/base_body.png" alt="chracter preview"/>
+                        <img src={skintone} alt="chracter preview" className="body"/> 
+                        {hair && <img src = {hair} alt="hair" className="hair"/>}  
+                        {top && <img src={top} alt="top" className="top"/>}   
+                        {bottom && <img src={bottom} alt="bottom" className="bottom"/>}   
+                        {dress && <img src={dress} alt="dress" className="dress"/>}           
                 </div>
             </div>
            
@@ -109,10 +136,12 @@ const CreateCharacters = () => {
                     <img src="../public/assets/icons/skintone_icon.png" alt="skin tone icon" onClick={getSkinTones}/>
                       <p>Skin tone</p>
                 </div>
+                
                 <div className="icons">
                     <img src="../public/assets/icons/hair_icon.png" alt="hair icon" onClick={getHairs}/>
                     <p>Hair</p>
                 </div>
+                
                 <div className="icons">
                     <img src="../public/assets/icons/shirt_icon.png" alt="top icon" onClick={getTops}/>
                     <p>Top</p>
@@ -125,11 +154,12 @@ const CreateCharacters = () => {
                     <img src="../public/assets/icons/dress_icon.png" alt="dress icon" onClick={getDresses} />
                     <p>Dress</p>
                 </div>
+            
             </div>
             <div id="options_display">
-                {options.map(option => (
+                {options.items.map(option => (
                     <div className="single_option">
-                     <img src={option.image}></img>
+                     <img src={option.image} onClick = {() => options.setter(option.image)}></img>
                     <p>{option.name}</p>
                     </div>
                    
